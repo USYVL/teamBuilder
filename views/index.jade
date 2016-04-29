@@ -13,7 +13,9 @@ extends layout
 // CREATE TABLE players (rowid integer primary key not null, pId text, pName text, pGender text, pAge integer, pDivision text);
 // CREATE TABLE links (rowid integer primary key not null,lpId text, lvId text);
 // CREATE TABLE volunteers (rowid integer primary key not null, vId text, vName text, vGenger text, vAge integer, vTitle text);
-//
+// CREATE TABLE team (rowid integer primary key not null, tId text, tName text, tNum int);
+// CREATE TABLE teamMapPlayer (rowid integer primary key not null, mtId text, mpId text);
+// CREATE TABLE teamMapVolun (rowid integer primary key not null, mtId text, mvId text);
 block content
   h1= title
   p Welcome to #{title}
