@@ -1,0 +1,53 @@
+#teams {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    width: 450px;
+}
+#players {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    width: 450px;
+}
+.division {
+    border: 3px solid green;
+    width: 960px;
+    vertical-align: top;
+    border-radius: 12px;
+    margin: 5px;
+}
+.teams {
+    width: 450px;
+    display: inline-block;
+    vertical-align: top;
+}
+.players {
+    vertical-align: top;
+    display: inline-block;
+    width: 450px;
+}
+
+.team {
+    border: 2px solid blue;
+    background-color: #acf;
+    padding: 3px;
+    margin: 3px;
+    width: 420px;
+    border-radius: 6px;
+}
+.player {
+    width: 400px;
+    border: 1px solid blue;
+    background-color: #cfc;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 4px;
+}
+.playerData {
+    display: none;
+}
+p {
+    padding: 2px;
+    margin: 2px;
+}
