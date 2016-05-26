@@ -4,6 +4,12 @@
     margin: 5px;
     width: 450px;
 }
+#coaches {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    width: 450px;
+}
 #players {
     border: 1px solid black;
     padding: 5px;
@@ -34,6 +40,14 @@
     padding: 3px;
     margin: 3px;
     width: 420px;
+    border-radius: 6px;
+}
+.coach {
+    border: 2px solid cyan;
+    background-color: #fac;
+    padding: 3px;
+    margin: 3px;
+    width: 400px;
     border-radius: 6px;
 }
 .player {
