@@ -1,0 +1,11 @@
+$myColor: red;
+$otherColor: green;
+
+.junk {
+  height: auto;
+  color: $myColor;
+}
+// Some comments, see if this gets stripped out
+.junk2 {
+  color: $otherColor;
+}
