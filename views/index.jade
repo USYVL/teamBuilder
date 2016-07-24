@@ -23,59 +23,16 @@ block content
   #coaches.coaches(ondrop="drop(event)" ondragover="allowDrop(event)")
     p.coachdrop Coaches List
     each cch in coaches
-      div(id="coach-#{cch.id}",class="coach",draggable="true",ondragstart="drag(event)")  #{cch.name}
+      div(id="coach-#{cch.uuid}",class="coach",draggable="true",ondragstart="drag(event)" ondragend="handleDragEnd(event)")  #{cch.name}
   #divisions
     each d in divisions
       div(id="division-#{d.name}",class="division #{d.name}")
         div(id="teams-#{d.name}",class="teams")
           p.nodrop #{d.name} Division Teams
           each  t in d.teams
-            div(id="team-#{t.id}",class="team",ondrop="drop(event)" ondragover="allowDrop(event)") #{t.name}
+            div(uuid="team-#{t.uuid}",class="team",ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="handleDragEnter(event)" ondragleave="handleDragLeave(event)")
+               p.team-label.nodrop #{t.name}
         div(id="players-#{d.name}",class="players",ondrop="drop(event)" ondragover="allowDrop(event)")
           p.playerdrop #{d.name} Division Players
           each p in d.players
-            div(id="player-#{p.id}",class="player",draggable="true",ondragstart="drag(event)") #{p.name} (#{p.age})
-
-
-//    #division-7-8.division.7-8
-//      #teams-7-8.teams
-//        p.nodrop 7-8 Division Teams
-//        #team-01.team(ondrop="drop(event)" ondragover="allowDrop(event)") Team-01
-//        #team-02.team(ondrop="drop(event)" ondragover="allowDrop(event)") Team-02
-//        #team-03.team(ondrop="drop(event)" ondragover="allowDrop(event)") Team-03
-//      #players-7-8.players(ondrop="drop(event)" ondragover="allowDrop(event)")
-//        p.nodrop 7-8 Division Players
-//        #player-00001.player(draggable="true",ondragstart="drag(event)",ondragover="")  Kim
-//          #player-data-00001.playerData  jsondata
-//        #player-00002.player(draggable="true",ondragstart="drag(event)",ondragover="")  Joey
-//        #player-00003.player(draggable="true",ondragstart="drag(event)")  JJ
-//        #player-00004.player(draggable="true",ondragstart="drag(event)")  Kitty
-//        #player-00005.player(draggable="true",ondragstart="drag(event)")  John
-//        #player-00006.player(draggable="true",ondragstart="drag(event)")  Kaley
-//        #player-00007.player(draggable="true",ondragstart="drag(event)")  AJ
-//        #player-00008.player(draggable="true",ondragstart="drag(event)")  Betty
-//        #player-00009.player(draggable="true",ondragstart="drag(event)")  Xander
-//        #player-00010.player(draggable="true",ondragstart="drag(event)")  Adam
-//        #player-00011.player(draggable="true",ondragstart="drag(event)")  Shalaka
-//
-//    #division-9-10.division
-//      #teams-9-10.teams.9-10
-//        p.nodrop 9-10 Division Teams
-//        #team-04.team(ondrop="drop(event)" ondragover="allowDrop(event)")  Team-04
-//        #team-05.team(ondrop="drop(event)" ondragover="allowDrop(event)")  Team-05
-//        #team-06.team(ondrop="drop(event)" ondragover="allowDrop(event)")  Team-06
-//      #players-9-10.players(ondrop="drop(event)" ondragover="allowDrop(event)")
-//        p.nodrop 9-10 Division Players
-//        #player-00101.player(draggable="true",ondragstart="drag(event)")  Kailey
-//        #player-00102.player(draggable="true",ondragstart="drag(event)")  Matt
-//        #player-00103.player(draggable="true",ondragstart="drag(event)")  Navi
-//        #player-00104.player(draggable="true",ondragstart="drag(event)")  Maya
-//        #player-00105.player(draggable="true",ondragstart="drag(event)")  Meia
-//        #player-00106.player(draggable="true",ondragstart="drag(event)")  Jonica
-//        #player-00107.player(draggable="true",ondragstart="drag(event)")  Maren
-//        #player-00108.player(draggable="true",ondragstart="drag(event)")  Izzi
-//        #player-00109.player(draggable="true",ondragstart="drag(event)")  Eliot
-//        #player-00110.player(draggable="true",ondragstart="drag(event)")  Brett
-//        #player-00111.player(draggable="true",ondragstart="drag(event)")  Pierce
-//
-// need a button to save the stuff, basically walk the dom
+            div(id="player-#{p.uuid}",class="player",draggable="true",ondragstart="drag(event)" ondragend="handleDragEnd(event)") #{p.name} (#{p.age}) (#{p.dependent})

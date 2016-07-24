@@ -1,62 +1,76 @@
+$colW: 760px;
+$mainW: 350px;
+$subW: 320px;
+$subsW: 300px;
+$teamBg: #acf;
+
 #teams {
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
-    width: 450px;
+    width: $mainW;
 }
 #coaches {
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
-    width: 450px;
+    width: $mainW;
 }
 #players {
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
-    width: 450px;
+    width: $mainW;
 }
 .division {
     border: 3px solid green;
-    width: 960px;
+    width: $colW;
     vertical-align: top;
     border-radius: 12px;
     margin: 5px;
 }
 .teams {
-    width: 450px;
+    width: $mainW;
     display: inline-block;
     vertical-align: top;
 }
 .players {
     vertical-align: top;
     display: inline-block;
-    width: 450px;
+    width: $mainW;
 }
-
+.team-label {
+  font-weight: bold;
+  font-size: 110%;
+  border: none;
+  border-color: $teamBg;
+  padding: 2px;
+  margin: 2px;
+}
 .team {
     border: 2px solid blue;
-    background-color: #acf;
+    background-color: $teamBg;
     padding: 3px;
     margin: 3px;
-    width: 420px;
+    width: $subW;
     border-radius: 6px;
 }
 .coach {
     border: 2px solid cyan;
     background-color: #fac;
-    padding: 3px;
-    margin: 3px;
-    width: 400px;
+    padding: 1px;
+    margin: 1px;
+    width: $subsW;
     border-radius: 6px;
 }
 .player {
-    width: 400px;
+    width: $subsW;
     border: 1px solid blue;
     background-color: #cfc;
-    padding: 3px;
-    margin: 3px;
+    padding: 1px;
+    margin: 1px;
     border-radius: 4px;
+    padding-left: 3px;
 }
 .playerData {
     display: none;
