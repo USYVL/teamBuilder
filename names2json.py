@@ -9,12 +9,6 @@ filename = './names.list'
 dlist = []
 coaches = []
 o = []
-class person(object):
-    def __init__(self,name,uuid):
-        self.name = name
-        self.uuid = uuid
-        #self.uuidstr = "%03d" % (uuid)
-
 class division:
     def __init__(self,name,min = -1,max = -1):
         self.name = name;
@@ -35,16 +29,23 @@ class division:
         for teamn in range(startNum,teamNum):
             teams.append({'uuid': "%03d" % (teamn),'name':'Team-'+"%03d"%(teamn),'coaches':[],'players':[]})
         for player in self.people:
-            players.append({'uuid':player.uuid,'age':player.age,'name':player.name})
+            players.append({'uuid':player.uuid,'age':player.age,'gender':player.gender,'name':player.name})
         tDict = {}
         tDict['name'] = self.name
         tDict['teams'] = teams
         tDict['players'] = players
         return tDict
 
+class person(object):
+    def __init__(self,name,uuid,gender):
+        self.name = name
+        self.uuid = uuid
+        self.gender = gender
+        #self.uuidstr = "%03d" % (uuid)
+
 class coach(person):
-    def __init__(self,name,uuid):
-        super(self.__class__,self).__init__(name,uuid)
+    def __init__(self,name,uuid,gender):
+        super(self.__class__,self).__init__(name,uuid,gender)
 
     def myPrint(self):
         print self.uuid,self.name
@@ -52,8 +53,8 @@ class coach(person):
         print '{ "id" : "' + self.uuid + '","name" : "' + self.name + '"}'
 
 class participant(person):
-    def __init__(self,name,age,uuid):
-        super(self.__class__,self).__init__(name,uuid)
+    def __init__(self,name,uuid,gender,age):
+        super(self.__class__,self).__init__(name,uuid,gender)
         self.age = age
 
     def myPrint(self):
@@ -66,15 +67,20 @@ lines = open(filename).read().splitlines()
 age=7
 uuid=1
 for line in lines:
-    #(firstName,lastName) = line.split()
+    a = []
+    a = line.split(':')
+    name = a[0]
+    gender = 'F' if len(a) < 2 else a[1]
+    if not gender:
+        gender = 'F'
     #print 'firstName: '+firstName+', lastName: '+lastName
     if ( uuid % kidsPerAge ) == 0:
         age += 1
     uuidstr = "%03d" % (uuid)
     if age <= 15:
-        o.append(participant(line,age,uuidstr))
+        o.append(participant(name,uuidstr,gender,age))
     else:
-        coaches.append({'uuid':uuidstr,'name':line})
+        coaches.append({'uuid':uuidstr,'gender':gender,'name':name})
     uuid += 1
 
 # initialize divisions
@@ -96,8 +102,9 @@ for oe in o:
             assigned = True
             de.addPerson(oe)
             break
-    if not assigned:
-        coaches.addPerson(oe)
+    # pretty sure this is not needed anymore
+    # if not assigned:
+    #     coaches.addPerson(oe)
 
 # need to build the divisions dict to convert into json
 toJson = []

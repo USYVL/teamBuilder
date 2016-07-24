@@ -2,7 +2,8 @@ $colW: 760px;
 $mainW: 350px;
 $subW: 320px;
 $subsW: 300px;
-$teamBg: #acf;
+$teamBg: #afa;
+$coachW: 200px;
 
 #teams {
     border: 1px solid black;
@@ -11,16 +12,25 @@ $teamBg: #acf;
     width: $mainW;
 }
 #coaches {
-    border: 1px solid black;
+    border: 3px solid black;
     padding: 5px;
     margin: 5px;
-    width: $mainW;
+    width: $coachW + 10;
+    // position: absolute;
+    position: fixed;
+    left: 70%;
+    top: 0;
+    border-radius: 8px;
 }
 #players {
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
     width: $mainW;
+}
+.coachdrop {
+    font-weight: bold;
+    font-size: 120%;
 }
 .division {
     border: 3px solid green;
@@ -40,12 +50,6 @@ $teamBg: #acf;
     width: $mainW;
 }
 .team-label {
-  font-weight: bold;
-  font-size: 110%;
-  border: none;
-  border-color: $teamBg;
-  padding: 2px;
-  margin: 2px;
 }
 .team {
     border: 2px solid blue;
@@ -57,16 +61,16 @@ $teamBg: #acf;
 }
 .coach {
     border: 2px solid cyan;
-    background-color: #fac;
+    // background-color: #fac;
     padding: 1px;
     margin: 1px;
-    width: $subsW;
+    width: $coachW;
     border-radius: 6px;
 }
 .player {
     width: $subsW;
     border: 1px solid blue;
-    background-color: #cfc;
+    // background-color: #cfc;
     padding: 1px;
     margin: 1px;
     border-radius: 4px;
@@ -75,7 +79,37 @@ $teamBg: #acf;
 .playerData {
     display: none;
 }
+.inl {
+    display: inline-block;
+    border-color: $teamBg;
+}
+.team-info {
+    width: 130px;
+}
+.team-name {
+    font-weight: bold;
+    font-size: 110%;
+    border: none;
+    padding: 2px;
+    margin: 2px;
+    width: 80px;
+}
+.team-gender {
+    width: 60px;
+}
 p {
     padding: 2px;
     margin: 2px;
+}
+.coach-gender-M {
+    background-color: #4af;
+}
+.coach-gender-F {
+    background-color: #faa;
+}
+.player-gender-M {
+    background-color: #6cf;
+}
+.player-gender-F {
+    background-color: #fcc;
 }

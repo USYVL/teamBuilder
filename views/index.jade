@@ -23,7 +23,7 @@ block content
   #coaches.coaches(ondrop="drop(event)" ondragover="allowDrop(event)")
     p.coachdrop Coaches List
     each cch in coaches
-      div(id="coach-#{cch.uuid}",class="coach",draggable="true",ondragstart="drag(event)" ondragend="handleDragEnd(event)")  #{cch.name}
+      div(id="coach-#{cch.uuid}",class="coach coach-gender-#{cch.gender}",draggable="true",ondragstart="drag(event)" ondragend="handleDragEnd(event)")  #{cch.name}
   #divisions
     each d in divisions
       div(id="division-#{d.name}",class="division #{d.name}")
@@ -31,8 +31,10 @@ block content
           p.nodrop #{d.name} Division Teams
           each  t in d.teams
             div(uuid="team-#{t.uuid}",class="team",ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="handleDragEnter(event)" ondragleave="handleDragLeave(event)")
-               p.team-label.nodrop #{t.name}
+               div.team-name.nodrop.inl #{t.name}
+               div.team-info.nodrop.inl coaches 0, players 0
+               div.team-gender.nodrop.inl F 0, M 0
         div(id="players-#{d.name}",class="players",ondrop="drop(event)" ondragover="allowDrop(event)")
           p.playerdrop #{d.name} Division Players
           each p in d.players
-            div(id="player-#{p.uuid}",class="player",draggable="true",ondragstart="drag(event)" ondragend="handleDragEnd(event)") #{p.name} (#{p.age}) (#{p.dependent})
+            div(id="player-#{p.uuid}",class="player player-gender-#{p.gender}",draggable="true",ondragstart="drag(event)" ondragend="handleDragEnd(event)") #{p.name} (#{p.age}) (#{p.dependent})

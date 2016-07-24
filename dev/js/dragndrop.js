@@ -128,15 +128,24 @@ function updateTeamInfo(target){
   var numKids = target.children.length;
   var numPlayers = 0;
   var numCoaches = 0;
+  var numM = 0;
+  var numF = 0;
   console.log('  numKids: '+numKids);
   for (var i = 0; i < numKids; i++){
     child = target.children[i];
-    if (hasClass(child,'player')) numPlayers++;
-    if (hasClass(child,'coach'))  numCoaches++;
+    if (hasClass(child,'player'))          numPlayers++;
+    if (hasClass(child,'coach'))           numCoaches++;
+    if (hasClass(child,'player-gender-F')) numF++;
+    if (hasClass(child,'player-gender-M')) numM++;
   }
   console.log('    '+target.id+' numCoaches: '+numCoaches+', numPlayers: '+numPlayers);
   console.log(target);
   //target.innerHTML = "Yo, dude";
+  // want to find a specific div below the target
+  target.getElementsByClassName('team-info')[0].innerHTML = "Coaches: "+numCoaches+', Players: '+numPlayers;
+  target.getElementsByClassName('team-gender')[0].innerHTML = numF+'F, '+numM+'M';
+
+  //infoTarget.innerHTML = "Yo Dude";
 }
 
 // var coachesQSA = document.querySelectorAll('.coach');
