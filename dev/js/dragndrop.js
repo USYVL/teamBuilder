@@ -70,29 +70,27 @@ function drop(ev) {
     console.log(droppedElement);
     // we could likely do this more cleanly with a dragEnd handler
     //droppedElement.style.opacity = '1.0';
-    var dropTarget = ev.target;
-    if (hasAnyClass(dropTarget,['player','coach','playerdrop','coachdrop','nodrop'])){
-      myTarget = dropTarget.parentNode;
-      // console.log(myFuncStr+' '+dropTarget.id+' has one of the classes. dragCounter: '+dragCounter);
-      // console.log(myTarget);
-    }
-    else {
-      // console.log(myFuncStr+' '+dropTarget.id+' doesnt have one of the classes. dragCounter: '+dragCounter);
-      myTarget = dropTarget;
-    }
 
-    // if ( hasClass(dropTarget,"player") || hasClass(dropTarget,"coach") ) {
-    //     // drop in parent node
-    //     //console.log('droppedElement: '+droppedElement.id+" hasClass(player) dropTarget:"+dropTarget.id);
-    //     dropTarget = dropTarget.parentNode;
+    // possibly generalize this so that we crawl up the tree till we get a node
+    // that has the correct class
+    var dropTarget = ev.target;
+
+    // inverse function of below, trying to find parent of the desired drop type
+    while (! hasAnyClass(dropTarget,['team','players','coaches'])){
+        dropTarget = dropTarget.parentNode;
+    }
+    myTarget = dropTarget;
+
+    // if (hasAnyClass(dropTarget,['player','coach','playerdrop','coachdrop','nodrop'])){
+    //   myTarget = dropTarget.parentNode;
+    //   // console.log(myFuncStr+' '+dropTarget.id+' has one of the classes. dragCounter: '+dragCounter);
+    //   // console.log(myTarget);
     // }
-    // if (hasClass(dropTarget,"playerdrop")){  // this covers the dropZone label
-    //     dropTarget = dropTarget.parentNode;
+    // else {
+    //   // console.log(myFuncStr+' '+dropTarget.id+' doesnt have one of the classes. dragCounter: '+dragCounter);
+    //   myTarget = dropTarget;
     // }
-    // if (hasClass(dropTarget,"coachdrop")){   // this covers the dropZone label
-    //     dropTarget = dropTarget.parentNode;
-    // }
-    //
+
     // two categories we want to prevent
     // dropping people on coachdiv and dropping coaches on players
     if( false ){
@@ -107,8 +105,19 @@ function drop(ev) {
     }
     else {
         console.log(myTarget.id);
-        myTarget.appendChild(droppedElement);
+        // want to insert coaches at top of the list
+        // we use appendChild, but we may want to order the drops (ie: coaches at top,
+        // players below).  insertBefore(firstChild) works, but puts the coaches
+        // above the Team label.  Need to insert after the team-gender, or before first player
+        if ( hasClass(droppedElement,"coach")){
+            // hmmmm, if we don't have a player element, this still seems to work, not sure why though
+            myTarget.insertBefore(droppedElement,myTarget.getElementsByClassName('player')[0]);
+        }
+        else {
+            myTarget.appendChild(droppedElement);
+        }
         // ideally should count coach and player children and update text to reflect that
+        // ummmm, this works ONLY if it's a team node
         updateTeamInfo(myTarget);
     }
     myTarget.style.borderStyle = 'solid';
@@ -125,6 +134,7 @@ function handleDragStart(e) {
 }
 
 function updateTeamInfo(target){
+    if ( ! hasClass(target,'team')) return 1;
   var numKids = target.children.length;
   var numPlayers = 0;
   var numCoaches = 0;

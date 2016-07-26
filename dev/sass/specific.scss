@@ -1,74 +1,62 @@
-$colW: 760px;
+$teamW: 300px;
+$teamContainerW: $teamW + 15px;
+$playerW: 160px;
+$playerContainerW: $playerW + 20px;
 $mainW: 350px;
 $subW: 320px;
 $subsW: 300px;
 $teamBg: #afa;
 $coachW: 200px;
+$coachContainerW: $coachW + 10px;
+$divisionW: $teamContainerW + $playerContainerW + 10px;
 
-#teams {
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
-    width: $mainW;
-}
+// These are the containers
+// #teams {
+//     border: 1px solid black;
+//     padding: 5px;
+//     margin: 5px;
+//     width: $teamW;
+// }
 #coaches {
     border: 3px solid black;
     padding: 5px;
     margin: 5px;
-    width: $coachW + 10;
+    width: $coachContainerW;
     // position: absolute;
     position: fixed;
-    left: 70%;
+    right: 10px;
     top: 0;
     border-radius: 8px;
 }
-#players {
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
-    width: $mainW;
-}
+// #players {
+//     border: 1px solid black;
+//     padding: 5px;
+//     margin: 5px;
+//     width: $playerContainerW;
+// }
 .coachdrop {
     font-weight: bold;
     font-size: 120%;
 }
 .division {
     border: 3px solid green;
-    width: $colW;
+    width: $divisionW;
     vertical-align: top;
     border-radius: 12px;
     margin: 5px;
 }
 .teams {
-    width: $mainW;
+    width: $teamContainerW;
     display: inline-block;
     vertical-align: top;
 }
 .players {
     vertical-align: top;
     display: inline-block;
-    width: $mainW;
-}
-.team-label {
-}
-.team {
-    border: 2px solid blue;
-    background-color: $teamBg;
-    padding: 3px;
-    margin: 3px;
-    width: $subW;
-    border-radius: 6px;
-}
-.coach {
-    border: 2px solid cyan;
-    // background-color: #fac;
-    padding: 1px;
-    margin: 1px;
-    width: $coachW;
-    border-radius: 6px;
+    width: $playerContainerW;
 }
 .player {
-    width: $subsW;
+    width: $playerW;
     border: 1px solid blue;
     // background-color: #cfc;
     padding: 1px;
@@ -78,6 +66,24 @@ $coachW: 200px;
 }
 .playerData {
     display: none;
+}
+.team-label {
+}
+.team {
+    border: 2px solid blue;
+    background-color: $teamBg;
+    padding: 3px;
+    margin: 3px;
+    width: $teamW;
+    border-radius: 6px;
+}
+.coach {
+    border: 2px solid cyan;
+    // background-color: #fac;
+    padding: 1px;
+    margin: 1px;
+    width: $coachW;
+    border-radius: 6px;
 }
 .inl {
     display: inline-block;
@@ -90,8 +96,9 @@ $coachW: 200px;
     font-weight: bold;
     font-size: 110%;
     border: none;
-    padding: 2px;
-    margin: 2px;
+    padding: 0px;
+    margin: 0px;
+    padding-left: 5px;
     width: 80px;
 }
 .team-gender {
