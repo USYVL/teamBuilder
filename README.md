@@ -6,7 +6,7 @@ Most of this is based on the w3schools example.
 This looks interesting:
 https://www.sitepoint.com/accessible-drag-drop/
 
-Initially the data was just embedded in the routes/index.js file.
+Initially the data was just embedded in the _routes/index.js_ file.
 Since then things have been reconfigured to read the data from two
 input files in the data directory.  Those are read in via app.js at
 startup.  The test data is prepared via the names2json.py script that reads
