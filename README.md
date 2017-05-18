@@ -1,4 +1,4 @@
-# teamBuilder
+# teamBuilder - proof of concept drag and drop team builder
 Attempt at a Drag and Drop Team builder
 
 Most of this is based on the w3schools example.
